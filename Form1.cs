@@ -1,5 +1,4 @@
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Restaurant_Form;
 
@@ -19,10 +18,11 @@ public partial class Form1 : Form
             Add.Visible = false;
             Edit.Visible = false;
             Delete.Visible = false;
+            More.Visible = false;
         }
     }
 
-    private void Seed_Click(object sender, EventArgs e)
+    private void SeedData_Click(object sender, EventArgs e)
     {
         if (!(Tables.Items.Count > 1))
         {
@@ -37,10 +37,12 @@ public partial class Form1 : Form
             Add.Visible = true;
             Edit.Visible = true;
             Delete.Visible = true;
+            More.Visible = true;
             File.WriteAllText(@"..\..\..\Seed.txt", "1");
         }
-        catch
+        catch (Exception ex)
         {
+
         }
         Tables_SelectedIndexChanged(new object(), new EventArgs());
     }
@@ -750,12 +752,85 @@ public partial class Form1 : Form
         MapEntity(res, mode, Restaurant_Management.Program.GetIReceipt(), entity);
     }
 
-    private void Tables_DrawItem(object sender, DrawItemEventArgs e)
+    private static BindingList<Supplier> GetSupplierWithHighestPayment(int year = 2023)
     {
-        int index = e.Index >= 0 ? e.Index : 0;
-        var brush = Brushes.White;
-        e.DrawBackground();
-        e.Graphics.DrawString(Tables.Items[index]?.ToString(), e.Font, brush, e.Bounds, StringFormat.GenericDefault);
-        e.DrawFocusRectangle();
+
+        var sup = Restaurant_Management.Program.GetISupplier();
+        var supplier = sup.GetSupplierWithHighestPaymentForYear(year);
+        return supplier is null ? new BindingList<Supplier>() :
+            new BindingList<Supplier>([supplier]);
+    }
+
+    private static BindingList<Order> GetAllByEmployeeAndYear(int Id, int year = 2022)
+    {
+        var ord = Restaurant_Management.Program.GetIOrder();
+        return new BindingList<Order>(ord.GetAllByEmployeeAndYear(Id, year).ToList());
+    }
+
+    private void More_Click(object sender, EventArgs e)
+    {
+        More.Visible = false;
+        HighestPaymentSupplier.Visible = true;
+        EmployeeOrders.Visible = true;
+        Less.Visible = true;
+    }
+
+    private void Less_Click(object sender, EventArgs e)
+    {
+        Less.Visible = false;
+        HighestPaymentSupplier.Visible = false;
+        EmployeeOrders.Visible = false;
+        More.Visible = true;
+    }
+
+    private void HighestPaymentSupplier_Click(object sender, EventArgs e)
+    {
+        var res = Interaction.InputBox($"Enter the year it's optional", $"Get The supplier with the highest payment", "2023");
+        try
+        {
+            int year = int.Parse(res);
+            Tables.SelectedIndex = Tables.Items.IndexOf("Supplier");
+            DataViewer.DataSource = GetSupplierWithHighestPayment(year);
+        }
+        catch
+        {
+            DataViewer.DataSource = GetSupplierWithHighestPayment();
+        }
+    }
+
+    private void EmployeeOrders_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            int Id = 0;
+            int year = 2022;
+            var res = Interaction.InputBox($"Enter the Id of the Employee and the year separated by a comma(,) but it's optional", $"Get Orders of Employee", "13,2022");
+            try
+            {
+                if (res.Contains(','))
+                {
+                    var top = res.Split(',');
+                    Id = int.Parse(top[0]);
+                    year = int.Parse(top[1]);
+                }
+                else
+                {
+                    Id = int.Parse(res);
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"Couldn't Find the required Employee", "Error 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Tables.SelectedIndex = Tables.Items.IndexOf("Order");
+            DataViewer.DataSource = GetAllByEmployeeAndYear(Id, year);
+        }
+        catch { }
+    }
+
+    private void Info_Click(object sender, EventArgs e)
+    {
+        Process.Start(new ProcessStartInfo { FileName = @"https://github.com/omaralian98/Restaurant-Form", UseShellExecute = true });
     }
 }

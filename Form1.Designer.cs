@@ -32,99 +32,28 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            SeedDate = new Button();
-            CreateTable = new Button();
-            Edit = new Button();
-            Delete = new Button();
-            Add = new Button();
-            Tables = new ComboBox();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(Form1));
             Records = new Label();
             DataViewer = new DataGridView();
+            SeedData = new CustomButton();
+            CreateTable = new CustomButton();
+            Add = new CustomButton();
+            Edit = new CustomButton();
+            Delete = new CustomButton();
+            Tables = new CustomComboBox();
+            Info = new CustomButton();
+            More = new CustomButton();
+            HighestPaymentSupplier = new CustomButton();
+            EmployeeOrders = new CustomButton();
+            Less = new CustomButton();
             ((ISupportInitialize)DataViewer).BeginInit();
             SuspendLayout();
-            // 
-            // SeedDate
-            // 
-            SeedDate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            SeedDate.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            SeedDate.Location = new Point(1, 798);
-            SeedDate.Name = "SeedDate";
-            SeedDate.Size = new Size(149, 38);
-            SeedDate.TabIndex = 0;
-            SeedDate.Text = "Seed Data";
-            SeedDate.UseVisualStyleBackColor = true;
-            SeedDate.Click += Seed_Click;
-            // 
-            // CreateTable
-            // 
-            CreateTable.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            CreateTable.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            CreateTable.Location = new Point(156, 798);
-            CreateTable.Name = "CreateTable";
-            CreateTable.Size = new Size(149, 38);
-            CreateTable.TabIndex = 1;
-            CreateTable.Text = "Create Tables";
-            CreateTable.UseVisualStyleBackColor = true;
-            CreateTable.Click += CreateTable_Click;
-            // 
-            // Edit
-            // 
-            Edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            Edit.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Edit.Location = new Point(884, 798);
-            Edit.Name = "Edit";
-            Edit.Size = new Size(100, 38);
-            Edit.TabIndex = 17;
-            Edit.Text = "Edit";
-            Edit.UseVisualStyleBackColor = true;
-            Edit.Click += Edit_Click;
-            // 
-            // Delete
-            // 
-            Delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            Delete.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Delete.Location = new Point(990, 798);
-            Delete.Name = "Delete";
-            Delete.Size = new Size(100, 38);
-            Delete.TabIndex = 16;
-            Delete.Text = "Delete";
-            Delete.UseVisualStyleBackColor = true;
-            Delete.Click += Delete_Click;
-            // 
-            // Add
-            // 
-            Add.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            Add.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Add.Location = new Point(777, 798);
-            Add.Name = "Add";
-            Add.Size = new Size(101, 38);
-            Add.TabIndex = 15;
-            Add.Text = "Add";
-            Add.UseVisualStyleBackColor = true;
-            Add.Click += Add_Click;
-            // 
-            // Tables
-            // 
-            Tables.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Tables.BackColor = Color.Indigo;
-            Tables.DrawMode = DrawMode.OwnerDrawFixed;
-            Tables.DropDownStyle = ComboBoxStyle.DropDownList;
-            Tables.FlatStyle = FlatStyle.Flat;
-            Tables.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Tables.ForeColor = Color.White;
-            Tables.FormattingEnabled = true;
-            Tables.Location = new Point(763, 0);
-            Tables.Name = "Tables";
-            Tables.Size = new Size(331, 47);
-            Tables.TabIndex = 13;
-            Tables.DrawItem += Tables_DrawItem;
-            Tables.SelectedIndexChanged += Tables_SelectedIndexChanged;
             // 
             // Records
             // 
             Records.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Records.AutoSize = true;
-            Records.BackColor = Color.Indigo;
+            Records.BackColor = Color.Navy;
             Records.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Records.ForeColor = Color.White;
             Records.Location = new Point(1, 0);
@@ -163,7 +92,7 @@
             DataViewer.DefaultCellStyle = dataGridViewCellStyle2;
             DataViewer.EnableHeadersVisualStyles = false;
             DataViewer.GridColor = Color.SteelBlue;
-            DataViewer.Location = new Point(12, 68);
+            DataViewer.Location = new Point(12, 54);
             DataViewer.Name = "DataViewer";
             DataViewer.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -184,8 +113,255 @@
             DataViewer.RowsDefaultCellStyle = dataGridViewCellStyle4;
             DataViewer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DataViewer.ShowEditingIcon = false;
-            DataViewer.Size = new Size(1068, 652);
+            DataViewer.Size = new Size(1068, 693);
             DataViewer.TabIndex = 19;
+            // 
+            // SeedData
+            // 
+            SeedData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            SeedData.BackColor = Color.Navy;
+            SeedData.BackgroundColor = Color.Navy;
+            SeedData.BorderColor = Color.Cyan;
+            SeedData.BorderRadius = 10;
+            SeedData.BorderSize = 2;
+            SeedData.Cursor = Cursors.Hand;
+            SeedData.FlatAppearance.BorderSize = 0;
+            SeedData.FlatStyle = FlatStyle.Flat;
+            SeedData.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SeedData.ForeColor = Color.Cyan;
+            SeedData.Location = new Point(1, 796);
+            SeedData.Name = "SeedData";
+            SeedData.Size = new Size(149, 40);
+            SeedData.TabIndex = 20;
+            SeedData.Text = "Seed Data";
+            SeedData.TextColor = Color.Cyan;
+            SeedData.UseVisualStyleBackColor = false;
+            SeedData.Click += SeedData_Click;
+            // 
+            // CreateTable
+            // 
+            CreateTable.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            CreateTable.BackColor = Color.Navy;
+            CreateTable.BackgroundColor = Color.Navy;
+            CreateTable.BorderColor = Color.Cyan;
+            CreateTable.BorderRadius = 10;
+            CreateTable.BorderSize = 2;
+            CreateTable.Cursor = Cursors.Hand;
+            CreateTable.FlatAppearance.BorderSize = 0;
+            CreateTable.FlatStyle = FlatStyle.Flat;
+            CreateTable.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CreateTable.ForeColor = Color.Cyan;
+            CreateTable.Location = new Point(156, 797);
+            CreateTable.Name = "CreateTable";
+            CreateTable.Size = new Size(160, 40);
+            CreateTable.TabIndex = 21;
+            CreateTable.Text = "Create Tables";
+            CreateTable.TextColor = Color.Cyan;
+            CreateTable.UseVisualStyleBackColor = false;
+            CreateTable.Click += CreateTable_Click;
+            // 
+            // Add
+            // 
+            Add.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            Add.BackColor = Color.Navy;
+            Add.BackgroundColor = Color.Navy;
+            Add.BorderColor = Color.Cyan;
+            Add.BorderRadius = 10;
+            Add.BorderSize = 2;
+            Add.Cursor = Cursors.Hand;
+            Add.FlatAppearance.BorderSize = 0;
+            Add.FlatStyle = FlatStyle.Flat;
+            Add.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Add.ForeColor = Color.Cyan;
+            Add.Location = new Point(1, 753);
+            Add.Name = "Add";
+            Add.Size = new Size(101, 40);
+            Add.TabIndex = 23;
+            Add.Text = "Add";
+            Add.TextColor = Color.Cyan;
+            Add.UseVisualStyleBackColor = false;
+            Add.Click += Add_Click;
+            // 
+            // Edit
+            // 
+            Edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            Edit.BackColor = Color.Navy;
+            Edit.BackgroundColor = Color.Navy;
+            Edit.BorderColor = Color.Cyan;
+            Edit.BorderRadius = 10;
+            Edit.BorderSize = 2;
+            Edit.Cursor = Cursors.Hand;
+            Edit.FlatAppearance.BorderSize = 0;
+            Edit.FlatStyle = FlatStyle.Flat;
+            Edit.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Edit.ForeColor = Color.Cyan;
+            Edit.Location = new Point(108, 753);
+            Edit.Name = "Edit";
+            Edit.Size = new Size(101, 40);
+            Edit.TabIndex = 24;
+            Edit.Text = "Edit";
+            Edit.TextColor = Color.Cyan;
+            Edit.UseVisualStyleBackColor = false;
+            Edit.Click += Edit_Click;
+            // 
+            // Delete
+            // 
+            Delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            Delete.BackColor = Color.Navy;
+            Delete.BackgroundColor = Color.Navy;
+            Delete.BorderColor = Color.Cyan;
+            Delete.BorderRadius = 10;
+            Delete.BorderSize = 2;
+            Delete.Cursor = Cursors.Hand;
+            Delete.FlatAppearance.BorderSize = 0;
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Delete.ForeColor = Color.Cyan;
+            Delete.Location = new Point(215, 753);
+            Delete.Name = "Delete";
+            Delete.Size = new Size(101, 40);
+            Delete.TabIndex = 25;
+            Delete.Text = "Delete";
+            Delete.TextColor = Color.Cyan;
+            Delete.UseVisualStyleBackColor = false;
+            Delete.Click += Delete_Click;
+            // 
+            // Tables
+            // 
+            Tables.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Tables.BackColor = Color.Navy;
+            Tables.BorderColor = Color.LightSkyBlue;
+            Tables.BorderSize = 1;
+            Tables.Cursor = Cursors.Hand;
+            Tables.DropDownStyle = ComboBoxStyle.DropDownList;
+            Tables.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Tables.ForeColor = Color.White;
+            Tables.IconColor = Color.Violet;
+            Tables.ListBackColor = Color.Navy;
+            Tables.ListTextColor = Color.White;
+            Tables.Location = new Point(825, 0);
+            Tables.MinimumSize = new Size(200, 30);
+            Tables.Name = "Tables";
+            Tables.Padding = new Padding(1);
+            Tables.Size = new Size(267, 47);
+            Tables.TabIndex = 26;
+            Tables.Texts = "";
+            Tables.OnSelectedIndexChanged += Tables_SelectedIndexChanged;
+            // 
+            // Info
+            // 
+            Info.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            Info.BackColor = Color.MediumSlateBlue;
+            Info.BackgroundColor = Color.MediumSlateBlue;
+            Info.BackgroundImage = Properties.Resources.Info;
+            Info.BackgroundImageLayout = ImageLayout.Zoom;
+            Info.BorderColor = Color.PaleVioletRed;
+            Info.BorderRadius = 20;
+            Info.BorderSize = 0;
+            Info.Cursor = Cursors.Hand;
+            Info.FlatAppearance.BorderSize = 0;
+            Info.FlatStyle = FlatStyle.Flat;
+            Info.ForeColor = Color.White;
+            Info.Location = new Point(1057, 803);
+            Info.Name = "Info";
+            Info.Size = new Size(35, 35);
+            Info.TabIndex = 27;
+            Info.TextColor = Color.White;
+            Info.UseVisualStyleBackColor = false;
+            Info.Click += Info_Click;
+            // 
+            // More
+            // 
+            More.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            More.BackColor = Color.Transparent;
+            More.BackgroundColor = Color.Transparent;
+            More.BackgroundImage = Properties.Resources.Right;
+            More.BackgroundImageLayout = ImageLayout.Zoom;
+            More.BorderColor = Color.Transparent;
+            More.BorderRadius = 10;
+            More.BorderSize = 2;
+            More.Cursor = Cursors.Hand;
+            More.FlatAppearance.BorderSize = 0;
+            More.FlatStyle = FlatStyle.Flat;
+            More.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            More.ForeColor = Color.Cyan;
+            More.Location = new Point(322, 797);
+            More.Name = "More";
+            More.Size = new Size(56, 39);
+            More.TabIndex = 28;
+            More.TextColor = Color.Cyan;
+            More.UseVisualStyleBackColor = false;
+            More.Click += More_Click;
+            // 
+            // HighestPaymentSupplier
+            // 
+            HighestPaymentSupplier.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            HighestPaymentSupplier.BackColor = Color.Navy;
+            HighestPaymentSupplier.BackgroundColor = Color.Navy;
+            HighestPaymentSupplier.BorderColor = Color.Cyan;
+            HighestPaymentSupplier.BorderRadius = 10;
+            HighestPaymentSupplier.BorderSize = 2;
+            HighestPaymentSupplier.Cursor = Cursors.Hand;
+            HighestPaymentSupplier.FlatAppearance.BorderSize = 0;
+            HighestPaymentSupplier.FlatStyle = FlatStyle.Flat;
+            HighestPaymentSupplier.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HighestPaymentSupplier.ForeColor = Color.Cyan;
+            HighestPaymentSupplier.Location = new Point(322, 797);
+            HighestPaymentSupplier.Name = "HighestPaymentSupplier";
+            HighestPaymentSupplier.Size = new Size(266, 40);
+            HighestPaymentSupplier.TabIndex = 29;
+            HighestPaymentSupplier.Text = "HighestPaymentSupplier";
+            HighestPaymentSupplier.TextColor = Color.Cyan;
+            HighestPaymentSupplier.UseVisualStyleBackColor = false;
+            HighestPaymentSupplier.Visible = false;
+            HighestPaymentSupplier.Click += HighestPaymentSupplier_Click;
+            // 
+            // EmployeeOrders
+            // 
+            EmployeeOrders.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            EmployeeOrders.BackColor = Color.Navy;
+            EmployeeOrders.BackgroundColor = Color.Navy;
+            EmployeeOrders.BorderColor = Color.Cyan;
+            EmployeeOrders.BorderRadius = 10;
+            EmployeeOrders.BorderSize = 2;
+            EmployeeOrders.Cursor = Cursors.Hand;
+            EmployeeOrders.FlatAppearance.BorderSize = 0;
+            EmployeeOrders.FlatStyle = FlatStyle.Flat;
+            EmployeeOrders.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EmployeeOrders.ForeColor = Color.Cyan;
+            EmployeeOrders.Location = new Point(594, 798);
+            EmployeeOrders.Name = "EmployeeOrders";
+            EmployeeOrders.Size = new Size(186, 40);
+            EmployeeOrders.TabIndex = 30;
+            EmployeeOrders.Text = "EmployeeOrders";
+            EmployeeOrders.TextColor = Color.Cyan;
+            EmployeeOrders.UseVisualStyleBackColor = false;
+            EmployeeOrders.Visible = false;
+            EmployeeOrders.Click += EmployeeOrders_Click;
+            // 
+            // Less
+            // 
+            Less.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            Less.BackColor = Color.Transparent;
+            Less.BackgroundColor = Color.Transparent;
+            Less.BackgroundImage = Properties.Resources.Left;
+            Less.BackgroundImageLayout = ImageLayout.Zoom;
+            Less.BorderColor = Color.Transparent;
+            Less.BorderRadius = 10;
+            Less.BorderSize = 2;
+            Less.Cursor = Cursors.Hand;
+            Less.FlatAppearance.BorderSize = 0;
+            Less.FlatStyle = FlatStyle.Flat;
+            Less.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Less.ForeColor = Color.Cyan;
+            Less.Location = new Point(786, 799);
+            Less.Name = "Less";
+            Less.Size = new Size(56, 39);
+            Less.TabIndex = 31;
+            Less.TextColor = Color.Cyan;
+            Less.UseVisualStyleBackColor = false;
+            Less.Visible = false;
+            Less.Click += Less_Click;
             // 
             // Form1
             // 
@@ -193,32 +369,49 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1092, 839);
-            Controls.Add(DataViewer);
+            Controls.Add(Less);
+            Controls.Add(EmployeeOrders);
+            Controls.Add(More);
+            Controls.Add(Info);
             Controls.Add(Tables);
-            Controls.Add(Records);
-            Controls.Add(SeedDate);
-            Controls.Add(CreateTable);
-            Controls.Add(Add);
-            Controls.Add(Edit);
             Controls.Add(Delete);
+            Controls.Add(Edit);
+            Controls.Add(Add);
+            Controls.Add(CreateTable);
+            Controls.Add(SeedData);
+            Controls.Add(DataViewer);
+            Controls.Add(Records);
+            Controls.Add(HighestPaymentSupplier);
             HelpButton = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Restaurant Managment App";
             Load += Form1_Load;
             ((ISupportInitialize)DataViewer).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private void Tables_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
-        private Button SeedDate;
-        private Button CreateTable;
-        private ComboBox Tables;
-        private Button Edit;
-        private Button Delete;
-        private Button Add;
         private Label Records;
         private DataGridView DataViewer;
+        private CustomButton SeedData;
+        private CustomButton CreateTable;
+        private CustomButton Add;
+        private CustomButton Edit;
+        private CustomButton Delete;
+        private CustomComboBox Tables;
+        private CustomButton Info;
+        private CustomButton More;
+        private CustomButton HighestPaymentSupplier;
+        private CustomButton EmployeeOrders;
+        private CustomButton Less;
     }
 }
