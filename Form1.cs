@@ -38,7 +38,6 @@ public partial class Form1 : Form
             Edit.Visible = true;
             Delete.Visible = true;
             More.Visible = true;
-            File.WriteAllText(@"..\..\..\Seed.txt", "1");
         }
         catch (Exception ex)
         {
@@ -62,8 +61,15 @@ public partial class Form1 : Form
 
     private static bool Seeded()
     {
-        string line = File.ReadAllText(@"..\..\..\Seed.txt");
-        return line == "1";
+        var test = Restaurant_Management.Program.GetIEmployee();
+        try
+        {
+            return test.GetAll().Any();
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private void AddToTables()
