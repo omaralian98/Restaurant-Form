@@ -33,7 +33,6 @@ public partial class Form1 : Form
         try
         {
             Restaurant_Management.Program.SeedData();
-            MessageBox.Show("The tables have been seeded with initial data", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Add.Visible = true;
             Edit.Visible = true;
             Delete.Visible = true;
@@ -44,6 +43,8 @@ public partial class Form1 : Form
 
         }
         Tables_SelectedIndexChanged(new object(), new EventArgs());
+        More_Click(new object(), new EventArgs());
+        MessageBox.Show("The tables have been seeded with initial data", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void CreateTable_Click(object sender, EventArgs e)
