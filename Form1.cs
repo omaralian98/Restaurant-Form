@@ -768,10 +768,12 @@ public partial class Form1 : Form
             new BindingList<Supplier>([supplier]);
     }
 
-    private static BindingList<Order> GetAllByEmployeeAndYear(int Id, int year = 2022)
+    private static (BindingList<Order>, decimal) GetAllByEmployeeAndYear(int Id, int year = 2022)
     {
         var ord = Restaurant_Management.Program.GetIOrder();
-        return new BindingList<Order>(ord.GetAllByEmployeeAndYear(Id, year).ToList());
+        var list = new BindingList<Order>(ord.GetAllByEmployeeAndYear(Id, year).ToList());
+        var total = ord.GetTotalAmountServedByEmployeeInYear(Id, year);
+        return (list, total);
     }
 
     private void More_Click(object sender, EventArgs e)
@@ -831,7 +833,9 @@ public partial class Form1 : Form
                 return;
             }
             Tables.SelectedIndex = Tables.Items.IndexOf("Order");
-            DataViewer.DataSource = GetAllByEmployeeAndYear(Id, year);
+            var (list, total) = GetAllByEmployeeAndYear(Id, year);
+            DataViewer.DataSource = list;
+            MessageBox.Show($"Total Amount Served By Employee: {total}");
         }
         catch { }
     }
