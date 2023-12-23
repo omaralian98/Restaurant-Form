@@ -768,8 +768,10 @@ public partial class Form1 : Form
             new BindingList<Supplier>([supplier]);
     }
 
-    private static (BindingList<Order>, decimal) GetAllByEmployeeAndYear(int Id, int year = 2022)
+    private static (BindingList<Order>, decimal) GetAllByEmployeeAndYear(string name, int year = 2022)
     {
+        var emp = Restaurant_Management.Program.GetIEmployee();
+        int Id = Convert.ToInt32(emp.GetAll().FirstOrDefault(x => x.FirstName.ToLower() == name.ToLower())?.Id);
         var ord = Restaurant_Management.Program.GetIOrder();
         var list = new BindingList<Order>(ord.GetAllByEmployeeAndYear(Id, year).ToList());
         var total = ord.GetTotalAmountServedByEmployeeInYear(Id, year);
@@ -811,31 +813,31 @@ public partial class Form1 : Form
     {
         try
         {
-            int Id = 0;
+            string Name = "Nader";
             int year = 2022;
-            var res = Interaction.InputBox($"Enter the Id of the Employee and the year separated by a comma(,) but it's optional", $"Get Orders of Employee", "13,2022");
+            var res = Interaction.InputBox($"Enter the Name of the Employee and the year separated by a comma(,) but it's optional", $"Get Orders of Employee", "Nader,2022");
             try
             {
                 if (res.Contains(','))
                 {
                     var top = res.Split(',');
-                    Id = int.Parse(top[0]);
+                    Name = top[0];
                     year = int.Parse(top[1]);
                 }
                 else
                 {
-                    Id = int.Parse(res);
+                    Name = res;
                 }
             }
             catch
             {
-                MessageBox.Show($"Couldn't Find the required Employee", "Error 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Couldn't Find the desired Employee", "Error 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             Tables.SelectedIndex = Tables.Items.IndexOf("Order");
-            var (list, total) = GetAllByEmployeeAndYear(Id, year);
+            var (list, total) = GetAllByEmployeeAndYear(Name, year);
             DataViewer.DataSource = list;
-            MessageBox.Show($"Total Amount Served By Employee: {total}");
+            MessageBox.Show($"Total Amount of money Served By {Name} in {year}: {total}");
         }
         catch { }
     }
